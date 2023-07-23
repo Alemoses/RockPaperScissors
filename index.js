@@ -1,3 +1,7 @@
+let win = 0;
+let lose = 0;
+let tie = 0;
+
 //Logic for getting the computer's choice in the game at random//
 
 const getComputerChoice = () => {
@@ -15,41 +19,51 @@ const getComputerChoice = () => {
 //Logic for the user's input and the game round results//
 
 const playRound = (playerSelection, computerSelection) => {
-  //Computer wins----------------------------------------------------
+  
+  //Computer wins--------------------------------------------------------------//
   if (playerSelection === 'rock'&& getComputerChoice() === 'paper') {
-    return "You lost this round!";
+      lose++;
+      return "You lost this round!";
   } else if (playerSelection === 'paper' && getComputerChoice() === 'scissors') {
-    return "You lost this round!";
+      lose++;
+      return "You lost this round!";
   } else if (playerSelection === "scissors" && getComputerChoice() === 'rock') {
-    return "You lost this round!";
+      lose++;
+      return "You lost this round!";
   }
-    //Tied round---------------------------------------
+    //Tied round--------------------------------------------------------------//
     else if (playerSelection === getComputerChoice()) {
-    return "This round resulted in a tie!";
+      tie++;
+      return "This round resulted in a tie!";
   } 
-    //Player wins--------------------------------------------------------------
+    //Player wins------------------------------------------------------------//
     else if (playerSelection === 'rock'&& getComputerChoice() === 'scissors') {
-    return "You win this round!";
+      win++;
+      return "You win this round!";
   } else if (playerSelection === 'paper' && getComputerChoice() === 'rock') {
-    return "You win this round!";
+      win++; 
+      return "You win this round!";
   } else if (playerSelection === "scissors" && getComputerChoice() === 'paper') {
-    return "You win this round!";
+      win++;
+      return "You win this round!";
   } 
-    //Default
+    //Default---------------------------------------------------------------//
     else {
     return "Invalid selection! Please enter rock, paper or scissors."
   }
 }
 
-//Logic for the 5 rounds of play
-
+//Logic for the 5 rounds of play-------------------------------------------//
 const game = () => {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 1; i < 6; i++) {
     const playerSelection = prompt('What do you chose?').toLowerCase();
 
     const computerSelection = getComputerChoice();
     
     alert(playRound(playerSelection,computerSelection));
+
+    //Keeps track of score-----------------------------------------------
+    alert(`Game: ${i}/5\rScore:\rYou: ${win}\rCPU: ${lose}\rTies: ${tie}`);
   }
 }
 

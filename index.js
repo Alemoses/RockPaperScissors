@@ -15,21 +15,42 @@ const getComputerChoice = () => {
 //Logic for the user's input and the game round results//
 
 const playRound = (playerSelection, computerSelection) => {
+  //Computer wins----------------------------------------------------
   if (playerSelection === 'rock'&& getComputerChoice() === 'paper') {
     return "You lost this round!";
   } else if (playerSelection === 'paper' && getComputerChoice() === 'scissors') {
     return "You lost this round!";
   } else if (playerSelection === "scissors" && getComputerChoice() === 'rock') {
-    return "You lost this round";
-  } else if (playerSelection === getComputerChoice()) {
+    return "You lost this round!";
+  }
+    //Tied round---------------------------------------
+    else if (playerSelection === getComputerChoice()) {
     return "This round resulted in a tie!";
-  } else {
-    return "You win this round";
+  } 
+    //Player wins--------------------------------------------------------------
+    else if (playerSelection === 'rock'&& getComputerChoice() === 'scissors') {
+    return "You win this round!";
+  } else if (playerSelection === 'paper' && getComputerChoice() === 'rock') {
+    return "You win this round!";
+  } else if (playerSelection === "scissors" && getComputerChoice() === 'paper') {
+    return "You win this round!";
+  } 
+    //Default
+    else {
+    return "Invalid selection! Please enter rock, paper or scissors."
   }
 }
 
-const playerSelection = 'rock';
+//Logic for the 5 rounds of play
 
-const computerSelection = getComputerChoice();
+const game = () => {
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = prompt('What do you chose?').toLowerCase();
 
-console.log(playRound(playerSelection, computerSelection));
+    const computerSelection = getComputerChoice();
+    
+    alert(playRound(playerSelection,computerSelection));
+  }
+}
+
+game();

@@ -54,7 +54,7 @@ const playRound = (playerSelection, computerSelection) => {
 }
 
 //Logic for the 5 rounds of play-------------------------------------------//
-const game = () => {
+/*const game = () => {
   for (let i = 1; i < 6; i++) {
     const playerSelection = prompt('What do you chose?').toLowerCase();
 
@@ -65,6 +65,6 @@ const game = () => {
     //Keeps track of score-----------------------------------------------
     alert(`Game: ${i}/5\rScore:\rYou: ${win}\rCPU: ${lose}\rTies: ${tie}`);
   }
-}
+}*/
 
 game();

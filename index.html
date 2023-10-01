@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Rock Paper Scissors</title>
-  <script src="/index.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +13,22 @@
     <h1 id="header">Rock Paper Scissors</h1>
   </header>
   <main>
-    <img src="/images/rps-pexels-darina-belonogova-8789755.jpg" width="500" height="auto">
+    <img id="rps-img" src="/images/rps-pexels-darina-belonogova-8789755.jpg" width="auto" height="700">
+    <div class="btn-container">
+      <button id="rock" class="btn">Rock</button>
+      <button id="paper" class="btn">Paper</button>
+      <button id="scissors" class="btn">Scissors</button>
+    </div>
+    <div class="scores-container">
+      <h2 id="score">Score</h2>
+      <h3 id="player">Player:</h3>
+      <p id="player-score">0</p>
+      <h3 id="computer">Computer:</h3>
+      <p id="computer-score">0</p>
+      <h3 id="tie">Tie</h3>
+      <p id="tie-score">0</p>
+    </div>
   </main>
+  <script src="index.js"></script>
 </body>
 </html>

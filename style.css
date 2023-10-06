@@ -1,11 +1,21 @@
 * {
   font-family: 'Abril Fatface', cursive;
   font-weight: 300;
+  color: rgb(15, 15, 84);
 }
 
 html {
   font-size: 16px;
-  background-color: rgb(244, 248, 214);
+  background-color: rgb(221, 240, 213);
+}
+
+header {
+  width: auto;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-areas: "rps-img"
+  "header";
+  gap: 15px;
 }
 
 body {
@@ -17,16 +27,74 @@ body {
 
 h1 {
   font-size: 3.5rem;
-  color: rgb(1, 1, 78);
 }
 
-#rps-img:hover {
-  opacity: 0.5;
+#title {
+  grid-row: 1;
+  grid-column: 2;
+  align-self: center;
 }
 
-.btn-container {
-  display: flex;
-  justify-content: space-around;
+
+.game-container {
+  display: grid;
+  grid-area: "rock-img" "paper-img" "scissors-img"
+  "rock" "paper" "scissors";
+  gap: 30px;
+}
+
+#options {
+  font-size: 2rem;
+  grid-row: 1;
+  grid-column: 2;
+}
+
+#rock-img {
+  grid-row: 2;
+  grid-column: 1;
+  border-radius: 7px;
+}
+
+#rock-img:hover {
+  opacity: 0.50;
+  transform: scale(1.1);
+}
+
+#paper-img {
+  grid-row: 2;
+  grid-column: 2;
+  border-radius: 7px;
+}
+
+#paper-img:hover {
+  opacity: 0.50;
+  transform: scale(1.1);
+}
+
+#scissors-img {
+  grid-row: 2;
+  grid-column: 3;
+  border-radius: 7px;
+}
+
+#scissors-img:hover {
+  opacity: 0.50;
+  transform: scale(1.1);
+}
+
+#rock {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+#paper {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+#scissors {
+  grid-row: 3;
+  grid-column: 3;
 }
 
 .btn {
@@ -35,6 +103,73 @@ h1 {
   padding-right: 15px;
   border-radius: 5px;
   font-size: 1.5rem;
+  background-color: rgba(237, 198, 198, 0.402);
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.comp-choice {
+display: flex;
+justify-content: center;
+}
+
+#comp-rock {
+  display: none;
+}
+
+#comp-paper {
+  display: none;
+}
+
+#comp-scissors {
+  display: none;
+}
+
+.winner {
+  display: flex;
+  justify-content: center;
+}
+
+#user-win {
+  display: none;
+}
+
+#comp-win {
+  display: none;
+}
+
+.restart-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+ }
+
+#restart-btn {
+  display: none;
+  margin: auto;
+  color: rgb(1, 1, 78);
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  background-color: rgba(237, 198, 198, 0.402);
+}
+
+.round-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+#round {
+  
+}
+
+#round-num {
+  
 }
 
 h2 {
@@ -62,6 +197,7 @@ p {
 
 #score {
   grid-column: 2;
+  justify-self: center;
 }
 
 #player {

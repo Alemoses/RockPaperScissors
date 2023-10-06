@@ -10,14 +10,33 @@
 </head>
 <body>
   <header>
-    <h1 id="header">Rock Paper Scissors</h1>
+    <h1 id="title">Rock Paper Scissors</h1>
   </header>
   <main>
-    <img id="rps-img" src="/images/rps-pexels-darina-belonogova-8789755.jpg" width="auto" height="700">
-    <div class="btn-container">
+    <div class="game-container">
+      <p id="options">Select an option below to start!</p>
+      <img id="rock-img" src="/images/rock-pexels-pixabay-161702.jpg" alt="picture of a rock" width="auto" height="300">
       <button id="rock" class="btn">Rock</button>
+      <img id="paper-img" src="/images/paper-pexels-anna-nekrashevich-8533218.jpg" alt="picture of paper" width="450" height="300">
       <button id="paper" class="btn">Paper</button>
+      <img id="scissors-img" src="/images/scissors-pexels-karolina-grabowska-4226910.jpg" alt="picture of scissors" width="auto" height="300">
       <button id="scissors" class="btn">Scissors</button>
+    </div>
+    <div class="comp-choice">
+      <h2 class="comp-choice" id="comp-rock">Computer chose Rock!</h2>
+      <h2 class="comp-choice" id="comp-paper">Computer chose Paper!</h2>
+      <h2 class="comp-choice" id="comp-scissors">Computer chose Scissors!</h2>
+    </div>
+    <div class="winner">
+      <h2 id="user-win">You win the game!</h2>
+      <h2 id="comp-win">The computer wins the game!</h2>
+    </div>
+    <div class="restart-container">
+      <button id="restart-btn">Restart</button>
+    </div>
+    <div class="round-info">
+      <h2 id="round">Round:</h2>
+      <h2 id="round-num">0</h2>
     </div>
     <div class="scores-container">
       <h2 id="score">Score</h2>

@@ -1,70 +1,133 @@
-let win = 0;
-let lose = 0;
+let player = 0;
+let computer = 0;
 let tie = 0;
+
+const compChoseRock = document.getElementById('comp-rock');
+const compChosePaper = document.getElementById('comp-paper');
+const compChoseScissors = document.getElementById('comp-scissors')
+
+const restart = document.getElementById('restart-btn');
+const roundNum = document.getElementById('round-num');
+const userWin = document.getElementById('user-win');
+const compWin = document.getElementById('comp-win');
+
+const playerScoreElem = document.getElementById('player-score');
+const compScoreElem = document.getElementById('computer-score');
+const tieScoreElem = document.getElementById('tie-score');
+
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
 
 //Logic for getting the computer's choice in the game at random//
 
-const getComputerChoice = () => {
+function getComputerChoice(){
   let computerChoice = Math.floor(Math.random() * 3);
-    
   if (computerChoice === 0) {
-      return 'rock'
+      computerChoice = 'rock';
+      compChoseRock.style.display = 'block';
+      compChoseScissors.style.display ='none';
+      compChosePaper.style.display = 'none';
   } else if (computerChoice === 1) {
-      return 'paper'
+      computerChoice ='paper'
+      compChosePaper.style.display = 'block';
+      compChoseRock.style.display = 'none';
+      compChoseScissors.style.display ='none';
   } else {
-      return 'scissors'
+      computerChoice = 'scissors'
+      compChoseScissors.style.display ='block';
+      compChosePaper.style.display = 'none';
+      compChoseRock.style.display = 'none';
   };
+  return computerChoice;
 }
 
-//Logic for the user's input and the game round results//
+//Logic for game round results//
 
-const playRound = (playerSelection, computerSelection) => {
-  
-  //Computer wins--------------------------------------------------------------//
-  if (playerSelection === 'rock'&& getComputerChoice() === 'paper') {
-      lose++;
-      return "You lost this round!";
-  } else if (playerSelection === 'paper' && getComputerChoice() === 'scissors') {
-      lose++;
-      return "You lost this round!";
-  } else if (playerSelection === "scissors" && getComputerChoice() === 'rock') {
-      lose++;
-      return "You lost this round!";
-  }
-    //Tied round--------------------------------------------------------------//
-    else if (playerSelection === getComputerChoice()) {
-      tie++;
-      return "This round resulted in a tie!";
-  } 
-    //Player wins------------------------------------------------------------//
-    else if (playerSelection === 'rock'&& getComputerChoice() === 'scissors') {
-      win++;
-      return "You win this round!";
-  } else if (playerSelection === 'paper' && getComputerChoice() === 'rock') {
-      win++; 
-      return "You win this round!";
-  } else if (playerSelection === "scissors" && getComputerChoice() === 'paper') {
-      win++;
-      return "You win this round!";
-  } 
-    //Default---------------------------------------------------------------//
-    else {
-    return "Invalid selection! Please enter rock, paper or scissors."
+function playRound(userChoice, computerChoice){
+  if(userChoice === 'rock' && computerChoice === 'paper'){
+    compScoreElem.innerHTML = ++computer;
+    console.log('The computer wins this round!')
+  }else if(userChoice === 'paper' && computerChoice === 'scissors'){
+    compScoreElem.innerHTML = ++computer;
+    console.log('The computer wins this round!');
+  }else if(userChoice === 'scissors' && computerChoice === 'rock'){
+    compScoreElem.innerHTML = ++computer;
+    console.log('The computer wins this round!');
+  }else if(userChoice === 'rock' && computerChoice === 'scissors'){
+    playerScoreElem.innerHTML = ++player;
+    console.log('You chose rock');
+    console.log('You win this round!');
+  }else if(userChoice === 'paper' && computerChoice === 'rock'){
+    playerScoreElem.innerHTML = ++player;
+    console.log('You chose paper');
+    console.log('You win this round!');
+  }else if(userChoice === 'scissors' && computerChoice === 'paper'){
+    playerScoreElem.innerHTML = ++player;
+    console.log('You chose scissors');
+    console.log('You win this round!');
+  }else{
+    tieScoreElem.innerHTML = ++tie;
+    console.log(`You chose ${userChoice}`)
+    console.log('This round was a tie')
   }
 }
 
-//Logic for the 5 rounds of play-------------------------------------------//
-/*const game = () => {
-  for (let i = 1; i < 6; i++) {
-    const playerSelection = prompt('What do you chose?').toLowerCase();
+function restartGame(){
+  userWin.style.display = "none";
+  compWin.style.display = "none";
+  restart.style.display = "none";
+  roundNum.innerHTML = 0;
+  player = 0;
+  computer = 0;
+  tie = 0;
+  playerScoreElem.innerHTML = '0';
+  compScoreElem.innerHTML = '0';
+  tieScoreElem.innerHTML = '0';
+  rock.disabled = false;
+  paper.disabled = false;
+  scissors.disabled = false;
+  rock.style.cursor = 'pointer';
+  paper.style.cursor = 'pointer';
+  scissors.style.cursor = 'pointer';
+  compChoseScissors.style.display = 'none';
+  compChosePaper.style.display = 'none';
+  compChoseRock.style.display = 'none';
+}
 
-    const computerSelection = getComputerChoice();
-    
-    alert(playRound(playerSelection,computerSelection));
-
-    //Keeps track of score-----------------------------------------------
-    alert(`Game: ${i}/5\rScore:\rYou: ${win}\rCPU: ${lose}\rTies: ${tie}`);
+function game(){
+  if(player === 5){
+    userWin.style.display = "block";
+    restart.style.display = "block";
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    rock.style.cursor = 'not-allowed';
+    paper.style.cursor = 'not-allowed';
+    scissors.style.cursor = 'not-allowed';
+    restart.onclick = restartGame;
+  }else if(computer === 5){
+    compWin.style.display = "block";
+    restart.style.display = "block";
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    rock.style.cursor = 'not-allowed';
+    paper.style.cursor = 'not-allowed';
+    scissors.style.cursor = 'not-allowed';
+    restart.onclick = restartGame;
   }
-}*/
+}
 
-game();
+const buttons = document.querySelectorAll('button');
+        
+buttons.forEach((button) => {   
+  button.addEventListener('click', () => {
+    let compSel = getComputerChoice();
+    let playSel = button.id;
+    playRound(playSel, compSel);
+    game();
+    ++roundNum.innerHTML
+    });
+    });
+

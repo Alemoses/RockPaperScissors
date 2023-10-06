@@ -1,3 +1,5 @@
 # RockPaperScissors
 
-<credit>Image by <a href="https://pixabay.com/users/clker-free-vector-images-3736/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=296854">Clker-Free-Vector-Images</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=296854">Pixabay</a><credit>
+This project is meant to display my skills as a web developer using HTML, CSS and Javascript.
+I've created a game of Rock Paper Scissors with an interactive user interface.
+Every file used in this project has been developed by me.
